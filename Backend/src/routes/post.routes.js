@@ -3,20 +3,20 @@ const postRouter = express.Router()
 const postController = require("../controllers/post.controlls")
 const multer = require('multer')
 const upload = multer({storage:multer.memoryStorage()})
-
+const identifyUsers = require("../middlewire/auth.middlewire")
 /**
  * post(/api/posts) [protected]
  * -req.body = {caption , image-file}
  */
 
-postRouter.post("/",upload.single("image"), postController.createPostController)
+postRouter.post("/",upload.single("image"),identifyUsers, postController.createPostController)
 
 /**
  * get method
  */
 
-postRouter.get("/",postController.getPostController)
+postRouter.get("/",identifyUsers,postController.getPostController)
 
-postRouter.get("/details/:postId",postController.getPostDetailsController)
+postRouter.get("/details/:postId",identifyUsers,postController.getPostDetailsController)
 
 module.exports = postRouter
