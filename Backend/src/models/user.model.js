@@ -16,11 +16,10 @@ const userSchema = new mongoose.Schema({
         required: [true,"Password is required"]
     },
     bio:String,
-    followers:Array,
     profile_img:{
         type:String,
         default:"https://ik.imagekit.io/yhvjrutsa/imagei.jpg",
-    }
+    },
 })
 
 const userModel = mongoose.model("users",userSchema)
