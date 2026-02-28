@@ -20,6 +20,10 @@ const userSchema = new mongoose.Schema({
         type:String,
         default:"https://ik.imagekit.io/yhvjrutsa/imagei.jpg",
     },
+    isPrivate:{
+        type:Boolean,
+        default: false
+    }
 })
 
 const userModel = mongoose.model("users",userSchema)

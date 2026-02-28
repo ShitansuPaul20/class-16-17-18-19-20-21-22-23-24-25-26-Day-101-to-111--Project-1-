@@ -29,3 +29,6 @@ post = {
     user:userId,
     createdAt:Date-time,
 }
+
+
+accepted api , rejected  api

@@ -27,6 +27,7 @@ async function registerController(req,res){
 
     const token = JWT.sign({
         id:user._id,
+        username: user.username,
     },process.env.JWT_TOKEN,
         {expiresIn:"1d"}
     )
@@ -68,7 +69,7 @@ async function loginController(req,res){
     }
 
     const token = JWT.sign(
-        {id: user._id},
+        {id: user._id,username:user.username},
         process.env.JWT_TOKEN,
         {expiresIn : "1d"}
     )
@@ -86,6 +87,42 @@ async function loginController(req,res){
     })
 }
 
+async function privacyController(req,res){
+
+    const userId = req.user.id
+    const {requestedPrivacy} = req.body
+
+    console.log(requestedPrivacy)
+
+    const isUserExist = await userModel.findById(userId)
+
+    if(!isUserExist){
+        return res.status(409).json({
+            message: "Unauthorized access , either login or register"
+        })
+    }
+
+    const existedPrivacy = isUserExist.isPrivate
+
+    if(Boolean(requestedPrivacy) === existedPrivacy){
+        return res.status(200).json({
+            message: (existedPrivacy)?"Your account is already Private":"Your account is alredy Public"
+        })
+    }
+
+    const user = await userModel.findByIdAndUpdate(
+        userId,
+        {$set:{isPrivate:Boolean(requestedPrivacy)}},
+        { returnDocument: 'after' }
+    )
+
+    res.status(200).json({
+        message: (Boolean(requestedPrivacy))?"Your account is now Private":"Your account is now Public",
+        user
+    }) 
+
+}
+
 module.exports = {
-    registerController , loginController
+    registerController , loginController , privacyController
 }
