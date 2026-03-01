@@ -9,5 +9,7 @@ authRouter.post('/login' , authController.loginController)
 
 authRouter.post('/privacy', identifyUser, authController.privacyController)
 
+authRouter.get('/get-me', identifyUser, authController.getMeController)
+
 
 module.exports = authRouter
