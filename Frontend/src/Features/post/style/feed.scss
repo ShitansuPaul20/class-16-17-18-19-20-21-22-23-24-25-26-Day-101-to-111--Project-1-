@@ -1,0 +1,102 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100vh;
+  width: 100vw;
+}
+
+.feed-page{
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    .feed{
+        max-width: 500px;
+        width: 100%;
+        .posts{
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        .post{
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            padding-inline: 0.5rem;
+            
+            .top{
+                display: flex;
+                gap: 1rem;
+                align-items: center;
+                .image{
+                    height: 3rem;
+                    width: 3rem;
+                    border-radius: 50%;
+                    background-position: center;
+                    overflow: hidden;
+                    border-radius: 50%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    // border: 2px solid rgba(255, 255, 255, 0);
+                    background: conic-gradient(from 30deg, red, #e87e90 ,yellow , #e87e90 , red);
+                    background-repeat: no-repeat;
+                    img{
+                        height: 90%;
+                        width: 90%;
+                        border-radius: 50%;
+                    }
+                }
+                p{
+                    font-size: 1.3rem;
+                }
+            }
+            .post-container{
+                width: 100%;
+                // background-color: wheat;
+                height: fit-content;
+                border-radius: 0.2rem;
+                border: 1px solid rgba(255, 255, 255, 0.275);
+                img{
+                    width: 100%;
+                    border-radius: 0.2rem;
+                }
+            }
+            .bottom{
+                display: flex;
+                flex-direction: column;
+                gap: 0.5rem;
+                .icons{
+                   
+                    display: flex;
+                    justify-content: space-between;
+                    
+                    .left{
+                        display: flex;
+                        gap: 1rem;
+                    }
+                    svg{
+                        width: 1.4rem;
+                        aspect-ratio: 1/1;
+                        color: white;
+                    }
+                    button{
+                        background-color: transparent;
+                        border: none;
+                        outline: none;
+                        cursor: pointer;
+                        .Like{
+                            fill: red;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
