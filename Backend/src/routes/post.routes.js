@@ -26,6 +26,8 @@ postRouter.get("/details/:postId",identifyUsers,postController.getPostDetailsCon
 
 postRouter.post("/like/:postId", identifyUsers , postController.likePostController)
 
+postRouter.post("/unlike/:postId", identifyUsers , postController.unlikePostController)
+
 /**
  * get api/posts/feed
  * get all teh post created in the db

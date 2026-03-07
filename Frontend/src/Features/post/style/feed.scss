@@ -12,8 +12,10 @@ html, body {
 .feed-page{
     height: auto;
     display: flex;
-    justify-content: center;
-    align-items: flex-start;
+    flex-direction: column;
+    justify-content: flex-start; 
+    align-items: center;
+    
     .feed{
         max-width: 500px;
         width: 100%;
