@@ -2,8 +2,6 @@ import { useState , useEffect } from "react";
 import { getMe, login, register } from "./Services/auth.api.jsx";
 import { AuthContext } from "./authContext.js";
 
-
-
 export function AuthProvider({children}){
     const [user, setuser] = useState(null)
     const [loading, setloading] = useState(false)

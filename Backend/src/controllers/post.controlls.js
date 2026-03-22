@@ -13,25 +13,44 @@ const imagekit = new ImageKit({
 })
 
 async function createPostController(req,res){
-    console.log(req.body , req.file)
 
-    const file = await imagekit.files.upload({
-        file: await toFile(Buffer.from(req.file.buffer) , 'file'),
-        fileName: "test",
-        folder:"cohort2-insta-clone"
-    })
+    try {
+        console.log("Body Data:", req.body);
+        console.log("File Data:", req.file);
 
-    const post = await postModel.create({
-        caption: req.body.caption,
-        imgUrl: file.url,
-        user: req.user.id,
-    })
+        if (!req.file) {
+            return res.status(400).json({ message: "File is required" });
+        }
+        const file = await imagekit.files.upload({
+            file: await toFile(Buffer.from(req.file.buffer), 'file'),
+            fileName: `insta_clone_${Date.now()}`,
+            folder: "cohort2-insta-clone"
+        });
+        const post = await postModel.create({
+            caption: req.body.caption || "",
+            imgUrl: file.url,
+            user: req.user.id, 
+            contentType: req.body.contentType || 'post' 
+        });
+        const User = require('../models/user.model'); 
+        await User.findByIdAndUpdate(req.user.id, { 
+            $push: { posts: post._id } 
+        });
 
-    res.status(201).json({
-        message: "post created successfully",
-        post
-    })
+        res.status(201).json({
+            message: `${post.contentType} created successfully`,
+            post
+        });
+
+    } catch (error) {
+        console.error("Create Post Error:", error);
+        res.status(500).json({ 
+            message: "Internal Server Error", 
+            error: error.message 
+        });
+    }
 }
+
 
 async function unlikePostController(req , res) {
     try{

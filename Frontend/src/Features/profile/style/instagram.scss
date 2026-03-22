@@ -1,0 +1,363 @@
+
+// Breakpoints
+$bp-sm: 480px;
+$bp-md: 768px;
+$bp-lg: 1024px;
+
+// Variables
+$bg-primary: #000;
+$bg-surface: #111;
+$bg-elevated: #262626;
+$bg-hover: #363636;
+$border-color: #262626;
+$text-primary: #fff;
+$text-muted: #a8a8a8;
+$story-gradient: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+$post-gradient: linear-gradient(135deg, #1a0a2e 0%, #3d1a5c 50%, #6b2fa0 100%);
+$font-stack: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+// Mixins
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-row($gap: 0) {
+  display: flex;
+  align-items: center;
+  gap: $gap;
+}
+
+@mixin icon-base {
+  width: 24px;
+  height: 24px;
+  fill: none;
+  stroke: $text-primary;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  cursor: pointer;
+}
+
+// =============================================
+//  Base
+// =============================================
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+
+
+.ig-wrap {
+  background: $bg-primary;
+  color: $text-primary;
+  font-family: $font-stack;
+  min-height: 100vh;
+  padding-bottom: 2rem;
+  width: 100%;
+
+  @media (min-width: $bp-md) {
+    max-width: 600px;
+    margin: 0 auto;
+    border-left: 0.5px solid $border-color;
+    border-right: 0.5px solid $border-color;
+  }
+
+  @media (min-width: $bp-lg) {
+    max-width: 935px;
+  }
+}
+
+// =============================================
+//  Header
+// =============================================
+
+.ig-header {
+  @include flex-row;
+  justify-content: space-between;
+  padding: 12px 16px;
+  border-bottom: 0.5px solid $border-color;
+  position: sticky;
+  top: 0;
+  background: $bg-primary;
+  z-index: 10;
+
+  @media (min-width: $bp-md) { padding: 12px 24px; }
+  @media (min-width: $bp-lg) { padding: 14px 32px; }
+
+  &-user {
+    @include flex-row(8px);
+    font-size: 16px;
+    font-weight: 600;
+    @media (min-width: $bp-md) { font-size: 18px; }
+  }
+
+  &-icons {
+    @include flex-row(20px);
+    @media (min-width: $bp-md) { gap: 24px; }
+  }
+}
+
+.ig-icon { @include icon-base; }
+
+.ig-verified {
+  width: 14px; height: 14px;
+  @media (min-width: $bp-md) { width: 16px; height: 16px; }
+}
+
+// =============================================
+//  Profile Section
+// =============================================
+
+.ig-profile-section {
+  padding: 16px 16px 0;
+  @media (min-width: $bp-md) { padding: 24px 24px 0; }
+  @media (min-width: $bp-lg) { padding: 32px 32px 0; }
+}
+
+.ig-top-row {
+  @include flex-row(20px);
+  align-items: flex-start;
+  margin-bottom: 16px;
+
+  @media (min-width: $bp-md) {
+    gap: 40px;
+    margin-bottom: 24px;
+    align-items: center;
+  }
+
+  @media (min-width: $bp-lg) { gap: 60px; }
+}
+
+.ig-avatar-wrap { position: relative; flex-shrink: 0; }
+
+.ig-avatar-ring {
+  width: 82px; height: 82px;
+  border-radius: 50%;
+  background: $story-gradient;
+  padding: 2.5px;
+  @include flex-center;
+
+  @media (min-width: $bp-md) { width: 120px; height: 120px; padding: 3px; }
+  @media (min-width: $bp-lg) { width: 150px; height: 150px; padding: 3.5px; }
+}
+
+.ig-avatar-inner {
+  width: 76px; height: 76px;
+  border-radius: 50%;
+  border: 2px solid $bg-primary;
+  overflow: hidden;
+  background: $bg-elevated;
+  @include flex-center;
+  
+  @media (min-width: $bp-md) {
+    width: 113px; height: 113px;
+    svg { width: 70px; height: 70px; }
+  }
+
+  @media (min-width: $bp-lg) {
+    width: 142px; height: 142px;
+    svg { width: 90px; height: 90px; }
+  }
+}
+
+.ig-avatar-img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.ig-stats {
+  display: flex;
+  gap: 24px;
+  flex: 1;
+  justify-content: center;
+
+  @media (min-width: $bp-md) { gap: 40px; justify-content: flex-start; }
+  @media (min-width: $bp-lg) { gap: 60px; }
+}
+
+.ig-stat {
+  text-align: center;
+  cursor: pointer;
+
+  @media (min-width: $bp-md) {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    align-items: baseline;
+  }
+
+  &-num {
+    font-size: 17px; font-weight: 700; color: $text-primary; line-height: 1.2;
+    @media (min-width: $bp-md) { font-size: 18px; }
+  }
+
+  &-lbl {
+    font-size: 13px; color: $text-muted;
+    @media (min-width: $bp-md) { color: $text-primary; font-size: 15px; }
+  }
+}
+
+.ig-name-block {
+  margin-bottom: 10px;
+  color: $text-primary; margin-bottom: 2px;
+  font-weight: 600;
+  @media (min-width: $bp-md) { margin-bottom: 14px; }
+}
+
+.ig-display-name {
+  font-size: 13px; font-weight: 600; color: $text-primary; margin-bottom: 2px;
+  @media (min-width: $bp-md) { font-size: 15px; margin-bottom: 6px; }
+}
+
+.ig-bio {
+  font-size: 13px; color: $text-primary; line-height: 1.5;
+  @media (min-width: $bp-md) { font-size: 14px; }
+
+  a { color: #e0f1ff; text-decoration: none; &:hover { text-decoration: underline; } }
+}
+
+.ig-btn-row {
+  display: flex; gap: 8px; margin: 12px 0;
+  @media (min-width: $bp-md) { margin: 16px 0; gap: 10px; }
+}
+
+.ig-btn {
+  flex: 1; padding: 7px 10px;
+  border-radius: 8px; font-size: 13px; font-weight: 600;
+  border: 1px solid #363636; background: $bg-elevated;
+  color: $text-primary; cursor: pointer; text-align: center;
+  transition: background 0.15s;
+
+  @media (min-width: $bp-md) { padding: 8px 20px; font-size: 14px; flex: 0 0 auto; }
+
+  &:hover { background: $bg-hover; }
+}
+
+// =============================================
+//  Stories Row
+// =============================================
+
+.ig-stories-row {
+  display: flex; gap: 16px; padding: 12px 16px; overflow-x: auto;
+  @media (min-width: $bp-md) { padding: 16px 24px; gap: 20px; }
+  @media (min-width: $bp-lg) { padding: 20px 32px; }
+  &::-webkit-scrollbar { display: none; }
+}
+
+.ig-story { display: flex; flex-direction: column; align-items: center; gap: 4px; cursor: pointer; }
+
+.ig-story-ring {
+  width: 56px; height: 56px;
+  border-radius: 50%; background: $bg-elevated;
+  border: 1.5px dashed #555; @include flex-center; transition: border-color 0.15s;
+  @media (min-width: $bp-md) { width: 64px; height: 64px; }
+  &:hover { border-color: #888; }
+}
+
+.ig-new-story {
+  font-size: 22px; color: $text-primary; line-height: 1;
+  @media (min-width: $bp-md) { font-size: 26px; }
+}
+
+.ig-story-lbl {
+  font-size: 11px; color: $text-muted; max-width: 56px; text-align: center;
+  @media (min-width: $bp-md) { font-size: 12px; max-width: 64px; }
+}
+
+// =============================================
+//  Tabs
+// =============================================
+
+.ig-tabs { display: flex; border-top: 0.5px solid $border-color; }
+
+.ig-tab {
+  flex: 1; padding: 12px 0; @include flex-center;
+  cursor: pointer; border-bottom: 1px solid transparent; transition: border-color 0.15s;
+  @media (min-width: $bp-md) { padding: 14px 0; }
+
+  svg {
+    width: 22px; height: 22px; fill: none; stroke: #555;
+    stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; transition: stroke 0.15s;
+    @media (min-width: $bp-md) { width: 24px; height: 24px; }
+  }
+
+  &.active { border-bottom: 1px solid $text-primary; svg { stroke: $text-primary; } }
+  &:hover svg { stroke: #aaa; }
+}
+
+// =============================================
+//  Post Grid
+// =============================================
+
+.ig-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin-top: 2px;
+  @media (min-width: $bp-md) { gap: 3px; margin-top: 3px; }
+}
+
+.ig-post {
+  aspect-ratio: 1;
+  background: $bg-surface;
+  position: relative;
+  overflow: hidden; 
+  cursor: pointer;
+  
+  &:hover .ig-post-overlay { 
+    opacity: 1; 
+  }
+}
+
+.ig-post-img {object-fit: cover; width: 100%; height: 100%; background: $post-gradient; @include flex-center; }
+
+.ig-post-overlay {
+  position: absolute; inset: 0; background: rgba(0,0,0,0.3); opacity: 0;
+  transition: opacity 0.2s; @include flex-center; gap: 12px;
+
+  span {
+    font-size: 13px; font-weight: 600; color: $text-primary;
+    @media (min-width: $bp-md) { font-size: 15px; }
+  }
+}
+
+.ig-reel-badge {
+  position: absolute; top: 6px; right: 6px;
+  background: rgba(0,0,0,0.5); border-radius: 4px; padding: 2px 4px;
+  svg { width: 14px; height: 14px; fill: $text-primary; display: block; }
+}
+
+// =============================================
+//  Responsive Profile Layout
+// =============================================
+
+.ig-profile-right {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 16px;
+}
+
+// Mobile: hide desktop elements
+.ig-name-desktop { display: none; }
+.ig-btn-desktop  { display: none; }
+
+// Mobile: show mobile elements normally
+.ig-name-mobile { display: block; }
+.ig-btn-mobile  { display: flex; }
+
+// md+: flip visibility
+@media (min-width: 768px) {
+  .ig-name-desktop { display: block; }
+  .ig-btn-desktop  { display: flex; gap: 10px; margin: 0; }
+
+  .ig-name-mobile  { display: block; }
+  .ig-btn-mobile   { display: none; }
+
+  .ig-top-row {
+    align-items: flex-start;
+  }
+
+  .ig-stats {
+    justify-content: flex-start;
+  }
+}

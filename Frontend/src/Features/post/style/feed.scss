@@ -10,14 +10,15 @@ html, body {
 }
 
 .feed-page{
-    height: auto;
+    height: fit-content;
     display: flex;
     flex-direction: column;
     justify-content: flex-start; 
     align-items: center;
+    background-color: rgb(41, 41, 41);
     
     .feed{
-        max-width: 500px;
+        max-width: 400px;
         width: 100%;
         .posts{
             width: 100%;
@@ -54,6 +55,7 @@ html, body {
                         width: 90%;
                         border-radius: 50%;
                     }
+                    
                 }
                 p{
                     font-size: 1.3rem;
@@ -66,6 +68,10 @@ html, body {
                 border-radius: 0.2rem;
                 border: 1px solid rgba(255, 255, 255, 0.275);
                 img{
+                    width: 100%;
+                    border-radius: 0.2rem;
+                }
+                video{
                     width: 100%;
                     border-radius: 0.2rem;
                 }

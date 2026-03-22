@@ -1,5 +1,6 @@
 import React from 'react'
 import "../Style/Form.scss"
+import "../../Shared/Style/style.scss"
 import { Link, useNavigate } from 'react-router'
 import { useState } from 'react'
 import { useAuth } from '../Hooks/useAuth'
@@ -46,7 +47,7 @@ const LoginForm = () => {
                   type="text" 
                   name='password' 
                   placeholder='Enter password'/>
-                <button>Login</button>
+                <button className='primary-button'>Login</button>
             </form>
             <p>Don't have an account? <Link className='toogleAuthForm' to="/register">Create Account</Link></p>
         </div>

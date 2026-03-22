@@ -12,7 +12,7 @@ html, body {
 .primary-button{
     padding-inline: 1.2rem;
     padding-block: 0.6rem;
-    background-color: rgb(212, 40, 40);
+    background: linear-gradient(to left , rgb(29, 168, 200) , rgb(96, 96, 255));
     color: whitesmoke;
     border-radius: 1.3rem;
     font-size: 1rem;
@@ -23,3 +23,47 @@ html, body {
         transform: scale(0.95);
     }
 }
+
+.home{
+  height: 100vh;
+  width: 100%;
+  display:grid;
+  grid-template-rows: 8% 10% 1fr;
+  grid-template-columns: 5% 30% 1fr;
+  grid-template-areas: "nav nav nav"
+                        "sidebar interaction stories"
+                        "sidebar interaction feed"
+  ;
+  background-color: rgb(27, 27, 27);
+  grid-gap: 15px;
+  padding-bottom: 0.5rem;
+  padding-right: 0.5rem;
+  .nav{
+    grid-area: nav;
+  }
+    .sidebar{
+      background-color: rgba(41, 41, 41, 0);
+      grid-area: sidebar;
+      border-radius: 0 0.4rem 0.4rem 0;
+      
+    }
+    .stories-section-container{
+      border-radius: 0.4rem;
+      background-color: rgb(41, 41, 41);
+      grid-area: stories;
+    }
+    .interactions-all-container{
+      
+      grid-area: interaction;
+    }
+    .feedpage{
+      
+      border-radius: 0.4rem;
+      grid-area: feed;
+      overflow: scroll;
+      &::-webkit-scrollbar{
+        display: none;
+      }
+    }
+    
+  }

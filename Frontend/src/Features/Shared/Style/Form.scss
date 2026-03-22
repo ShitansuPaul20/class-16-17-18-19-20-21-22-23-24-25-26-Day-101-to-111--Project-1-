@@ -36,6 +36,7 @@ main{
     gap: 1.5rem;
     h1{
         font-size: 2rem;
+        // color: linear-gradient(to left , rgb(29, 168, 200) , rgb(96, 96, 255));
     }
     form{
         display: flex;
@@ -48,21 +49,9 @@ main{
             padding-block: 1rem;
             border-radius: 1rem;
         }
-        button{
-            border: none;
-            outline: none;
-            padding-inline: 1.5rem;
-            padding-block: 1rem;
-            border-radius: 1rem;
-            background-color: rgb(212, 73, 73);
-            color: whitesmoke;
-            &:active{
-                transform: scale(0.95);
-            }
-        }
     }
     .toogleAuthForm{
         text-decoration: none;
-        color: rgb(212, 73, 73);
+        color: rgb(73, 168, 212);
     }
 }

@@ -9,14 +9,38 @@ html, body {
   width: 100vw;
 }
 
-p{
-
-}
 .Nav-bar{
     width: 100%;
+    height: 100%;
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
+    background-color: rgb(41, 41, 41);
+    justify-content: space-between;
     padding-inline: 1rem;
     padding-block: 0.5rem;
+    .logo-doodle-home-page{
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      justify-content: center;
+      .doodle-logo{
+        .logo-circle{
+          height: 3.5rem;
+          width: 3.5rem;
+          border-radius: 25%;
+          overflow: hidden;
+          img{
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+          }
+        }
+      }
+      .home-page{
+        display: flex;
+        gap: 1px;
+        align-items: flex-end;
+        justify-content: center;
+      }
+    }
 }

@@ -13,8 +13,13 @@ const postSchema = new mongoose.Schema({
         ref:"users",
         type: mongoose.Schema.Types.ObjectId,
         required: ['true' , "User id is required for creating an post"]
+    },
+    contentType: {
+        type: String,
+        enum: ['post', 'reel', 'tagged'],
+        default: 'post'
     }
-})
+},{timestamps: true})
 
 const postModel = mongoose.model("posts",postSchema)
 
